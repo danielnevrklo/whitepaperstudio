@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>White Paper Studio | Strategie, dokumentace a správní řízení</title>
+    <meta
+      name="description"
+      content="White Paper Studio pomáhá firmám i institucím s tvorbou white papers, odbornou argumentací a podporou ve správním řízení."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="aurora aurora-a" aria-hidden="true"></div>
+    <div class="aurora aurora-b" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#home">
+        <span class="brand-mark">WPS</span>
+        <span class="brand-text">White Paper Studio</span>
+      </a>
+      <nav>
+        <a href="#services">Služby</a>
+        <a href="#cockpit">Use cases</a>
+        <a href="#anatomy">Anatomie</a>
+        <a href="#contact">Kontakt</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Otevřít menu">☰</button>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">White papers • Správní řízení • Strategie</p>
+          <h1>Dokumentace, která obstojí před boardem i úřadem.</h1>
+          <p class="lead">
+            Tvoříme argumentačně silné white papers a podklady pro správní řízení.
+            Spojujeme právo, data a jasný narativ, aby rozhodnutí stálo na pevném základu.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary magnetic" href="#contact">Domluvit konzultaci</a>
+            <a class="btn btn-secondary magnetic" href="#cockpit">Projít use cases</a>
+          </div>
+          <div class="hero-tags">
+            <span>Legislativa</span><span>Data</span><span>Regulace</span><span>Executive</span>
+          </div>
+        </div>
+
+        <div class="hero-kpis reveal">
+          <article>
+            <strong class="count" data-target="120">0</strong>
+            <span>Zpracovaných dokumentů</span>
+          </article>
+          <article>
+            <strong><span class="count" data-target="92">0</span>%</strong>
+            <span>Úspěšnost ve správních podáních</span>
+          </article>
+          <article>
+            <strong><span class="count" data-target="48">0</span>h</strong>
+            <span>První návrh struktury</span>
+          </article>
+          <article class="kpi-note">
+            <p>„Nejdřív jasný argument. Až potom text.“</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Služby</p>
+          <h2>Designově čisté výstupy. Věcně extrémně přesné.</h2>
+        </div>
+        <div class="cards">
+          <article class="card reveal" data-tilt>
+            <h3>White paper strategie</h3>
+            <p>Definice cíle, publika a argumentačních linií s jasnou rozhodovací logikou.</p>
+          </article>
+          <article class="card reveal" data-tilt>
+            <h3>Tvorba odborné argumentace</h3>
+            <p>Kombinujeme právní rámec, data a precedenty do konzistentního výstupu.</p>
+          </article>
+          <article class="card reveal" data-tilt>
+            <h3>Podpora správního řízení</h3>
+            <p>Podání, připomínky i interní podklady pro jednotný postup týmu.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cockpit" id="cockpit">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Interactive Use Cases</p>
+          <h2>Vyberte situaci a okamžitě uvidíte doporučený výstup</h2>
+        </div>
+
+        <div class="cockpit-shell reveal">
+          <div class="case-tabs" role="tablist" aria-label="Typy zadání">
+            <button class="case-tab active" data-case="regulace" aria-selected="true">Regulace trhu</button>
+            <button class="case-tab" data-case="dotace" aria-selected="false">Dotace</button>
+            <button class="case-tab" data-case="infrastruktura" aria-selected="false">Infrastruktura</button>
+          </div>
+
+          <article class="case-panel">
+            <h3 id="case-title">Regulace trhu</h3>
+            <p id="case-text">
+              Připravíme white paper s variantami regulatorních dopadů, modelací rizik a doporučením postupu pro interní vedení i externí jednání.
+            </p>
+            <ul id="case-points">
+              <li>Právní + datová argumentace pro management.</li>
+              <li>Podklady pro připomínková řízení.</li>
+              <li>Executive verze pro board.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section anatomy" id="anatomy">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Anatomie dokumentu</p>
+          <h2>Klikněte na části white paperu a prozkoumejte jejich roli</h2>
+        </div>
+
+        <div class="anatomy-grid reveal">
+          <div class="paper-mock" aria-label="Interaktivní náhled dokumentu">
+            <button class="hotspot active" data-hotspot="summary" style="top: 12%; left: 18%;">1</button>
+            <button class="hotspot" data-hotspot="risk" style="top: 36%; left: 72%;">2</button>
+            <button class="hotspot" data-hotspot="evidence" style="top: 58%; left: 28%;">3</button>
+            <button class="hotspot" data-hotspot="actions" style="top: 78%; left: 67%;">4</button>
+            <div class="paper-lines" aria-hidden="true"></div>
+          </div>
+
+          <article class="hotspot-detail">
+            <h3 id="hotspot-title">Executive summary</h3>
+            <p id="hotspot-text">Jednostránkové shrnutí pro rychlé rozhodnutí vedení: co, proč, dopad, doporučení.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section process" id="process">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Proces</p>
+          <h2>Interaktivní timeline spolupráce</h2>
+        </div>
+
+        <div class="process-shell reveal">
+          <input id="process-range" type="range" min="1" max="4" value="1" />
+          <div class="process-steps">
+            <article class="step active" data-step="1"><strong>01</strong><p>Diagnostika</p></article>
+            <article class="step" data-step="2"><strong>02</strong><p>Architektura argumentace</p></article>
+            <article class="step" data-step="3"><strong>03</strong><p>Drafting sprint</p></article>
+            <article class="step" data-step="4"><strong>04</strong><p>Finalizace</p></article>
+          </div>
+          <p id="process-description" class="process-description">Mapujeme cíle, rizika, stakeholdery a regulatorní rámec.</p>
+        </div>
+      </section>
+
+      <section class="section cta reveal" id="contact">
+        <h2>Chcete dokument, který změní výsledek řízení?</h2>
+        <p>Napište nám. Do 24 hodin dostanete návrh dalšího postupu.</p>
+        <a class="btn btn-primary magnetic" href="mailto:hello@whitepaperstudio.cz">hello@whitepaperstudio.cz</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> White Paper Studio. Všechna práva vyhrazena.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
