@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -19,8 +19,6 @@
   <body>
     <div class="scroll-progress" aria-hidden="true"></div>
     <div class="cursor-glow" aria-hidden="true"></div>
-    <div class="ambient ambient-1" aria-hidden="true"></div>
-    <div class="ambient ambient-2" aria-hidden="true"></div>
 
     <header class="topbar">
       <a class="brand" href="#home">
@@ -29,9 +27,8 @@
       </a>
       <nav>
         <a href="#services">Služby</a>
+        <a href="#experience">Experience</a>
         <a href="#process">Proces</a>
-        <a href="#insights">Příklady</a>
-        <a href="#faq">FAQ</a>
         <a href="#contact">Kontakt</a>
       </nav>
       <button class="menu-toggle" aria-label="Otevřít menu">☰</button>
@@ -39,67 +36,52 @@
 
     <main>
       <section class="hero" id="home">
-        <div class="hero-main">
-          <p class="eyebrow reveal">Konzultace • Strategie • Exekuce</p>
-          <h1 class="reveal">Tvoříme white papers, které mění rozhodnutí.</h1>
-          <p class="lead reveal">
-            Pomáháme organizacím přesvědčivě formulovat odborné argumenty, připravit
-            podklady pro správní řízení a proměnit komplexní témata ve srozumitelná,
-            důvěryhodná stanoviska.
-          </p>
-
-          <div class="hero-pills reveal" aria-label="specializace">
-            <span>Legislativa</span>
-            <span>Data</span>
-            <span>Správní proces</span>
-            <span>Stakeholdeři</span>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow reveal">White papers • Správní řízení • Strategie</p>
+            <h1 class="reveal">Dokumentace, která nehovoří. Ale přesvědčuje.</h1>
+            <p class="lead reveal">
+              Propojujeme data, právo a jasnou argumentaci. Vytváříme white papers,
+              které obstojí v boardroomu i před správním orgánem.
+            </p>
+            <div class="hero-actions reveal">
+              <a class="btn btn-primary magnetic" href="#contact">Začít spolupráci</a>
+              <a class="btn btn-secondary magnetic" href="#experience">Prozkoumat experience</a>
+            </div>
           </div>
 
-          <div class="hero-actions reveal">
-            <a class="btn btn-primary magnetic" href="#contact">Nezávazná konzultace</a>
-            <a class="btn btn-secondary magnetic" href="#services">Prohlédnout služby</a>
-          </div>
-        </div>
-
-        <aside class="simulator reveal" aria-label="Interaktivní simulace připravenosti podání">
-          <div class="sim-top">
-            <h2>Simulátor připravenosti podání</h2>
-            <button id="shuffle" class="icon-btn" type="button" aria-label="Náhodný scénář">🎲</button>
-          </div>
-          <p>Posuňte scénář a uvidíte doporučený typ výstupu.</p>
-
-          <label for="complexity">Komplexita případu</label>
-          <input id="complexity" type="range" min="1" max="100" value="58" />
-
-          <label for="deadline">Čas do podání (dny)</label>
-          <input id="deadline" type="range" min="1" max="60" value="21" />
-
-          <div class="simulator-result pulse-target">
-            <strong id="score">74%</strong>
-            <span id="recommendation">Doporučení: White paper + příloha pro správní řízení.</span>
-          </div>
-        </aside>
-
-        <div class="ticker reveal" aria-label="Klíčové kompetence White Paper Studio">
-          <div class="ticker-track">
-            <span>White paper strategie</span><span>Regulatorní analýzy</span
-            ><span>Správní podání</span><span>Stakeholder mapping</span
-            ><span>Data storytelling</span><span>White paper strategie</span
-            ><span>Regulatorní analýzy</span><span>Správní podání</span>
+          <div class="hero-orbital reveal" aria-label="Interaktivní orbit panel">
+            <div class="orbit-center">
+              <span>WPS</span>
+              <p id="orbit-label">Regulatorní strategie</p>
+            </div>
+            <button class="orbit-pill active" data-orbit="Regulatorní strategie">Strategie</button>
+            <button class="orbit-pill" data-orbit="Důkazní argumentace">Argumentace</button>
+            <button class="orbit-pill" data-orbit="Správní podání">Správní řízení</button>
+            <button class="orbit-pill" data-orbit="Stakeholder komunikace">Stakeholdeři</button>
           </div>
         </div>
 
-        <div class="stats reveal">
+        <div class="marquee reveal" aria-label="Kompetence White Paper Studio">
+          <div class="marquee-track">
+            <span>White paper strategie</span><span>Správní podání</span
+            ><span>Legislativní argumentace</span><span>Dopadové analýzy</span
+            ><span>Stakeholder mapping</span><span>Executive summary</span
+            ><span>White paper strategie</span><span>Správní podání</span>
+          </div>
+        </div>
+
+        <div class="stat-cards reveal">
           <article>
-            <strong>120+</strong>
+            <strong class="count" data-target="120">0</strong>
             <span>Zpracovaných dokumentů</span>
           </article>
           <article>
-            <strong>92 %</strong>
+            <strong><span class="count" data-target="92">0</span>%</strong>
             <span>Úspěšnost ve správních podáních</span>
           </article>
           <article>
-            <strong>48 h</strong>
+            <strong><span class="count" data-target="48">0</span>h</strong>
             <span>První návrh klíčové struktury</span>
           </article>
         </div>
@@ -108,124 +90,84 @@
       <section class="section" id="services">
         <div class="section-heading reveal">
           <p class="eyebrow">Služby</p>
-          <h2>Komplexní podpora od analýzy po finální podání</h2>
+          <h2>Modulární tým pro komplexní dokumentační projekty</h2>
         </div>
         <div class="cards">
           <article class="card reveal" data-tilt>
             <h3>White paper strategie</h3>
             <p>
-              Nastavení cíle, cílových skupin, klíčových narativů a datového rámce,
-              který podpoří vaše rozhodovací procesy i veřejnou komunikaci.
+              Definice cíle, publika, argumentačních linií a struktury dokumentu,
+              který má měřitelný vliv na rozhodování.
             </p>
           </article>
           <article class="card reveal" data-tilt>
             <h3>Tvorba odborné argumentace</h3>
             <p>
-              Připravíme argumentačně silný dokument opřený o legislativu, data,
-              precedenty a odborné zdroje.
+              Kombinujeme právní rámec, data a precedenty do konzistentního,
+              obhajitelného a srozumitelného výstupu.
             </p>
           </article>
           <article class="card reveal" data-tilt>
-            <h3>Správní řízení & podání</h3>
+            <h3>Podpora správního řízení</h3>
             <p>
-              Pomůžeme se strukturou podání, formulací připomínek i koordinací
-              podkladů tak, aby obstály po věcné i formální stránce.
+              Připravujeme podání, připomínky i interní podklady pro rychlou orientaci
+              vedení a jednotný postup týmu.
             </p>
           </article>
+        </div>
+      </section>
+
+      <section class="section experience" id="experience">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Interactive Experience</p>
+          <h2>Scrollem řídíte příběh spolupráce</h2>
+        </div>
+
+        <div class="story-wrap">
+          <div class="story-track" id="story-track">
+            <article class="story-card active" data-story>
+              <p>01</p>
+              <h3>Brief & mapování</h3>
+              <p>Načteme kontext, role, data i regulatorní omezení.</p>
+            </article>
+            <article class="story-card" data-story>
+              <p>02</p>
+              <h3>Argumentační architektura</h3>
+              <p>Postavíme logiku dokumentu včetně oponentních scénářů.</p>
+            </article>
+            <article class="story-card" data-story>
+              <p>03</p>
+              <h3>Drafting sprint</h3>
+              <p>Dodáme návrh a iterujeme s vaším týmem v krátkých cyklech.</p>
+            </article>
+            <article class="story-card" data-story>
+              <p>04</p>
+              <h3>Finalizace & implementace</h3>
+              <p>Final white paper + podklady pro jednání a interní použití.</p>
+            </article>
+          </div>
         </div>
       </section>
 
       <section class="section process" id="process">
         <div class="section-heading reveal">
-          <p class="eyebrow">Jak pracujeme</p>
-          <h2>Transparentní proces, měřitelné výstupy</h2>
-        </div>
-        <ol class="timeline">
-          <li class="reveal">
-            <span>01</span>
-            <div>
-              <h3>Diagnostika situace</h3>
-              <p>
-                Mapujeme kontext, stakeholdery a regulatorní rámec. Definujeme, co
-                musí dokument skutečně změnit.
-              </p>
-            </div>
-          </li>
-          <li class="reveal">
-            <span>02</span>
-            <div>
-              <h3>Návrh argumentační architektury</h3>
-              <p>
-                Vytváříme strukturu dokumentu včetně důkazních linií, rizik a
-                oponentních scénářů.
-              </p>
-            </div>
-          </li>
-          <li class="reveal">
-            <span>03</span>
-            <div>
-              <h3>Finalizace & implementace</h3>
-              <p>
-                Dodáme finální white paper, executive shrnutí i podklady pro další
-                interní nebo správní použití.
-              </p>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <section class="section insights" id="insights">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Interaktivní příklady</p>
-          <h2>Vyberte si scénář a uvidíte, co dodáváme</h2>
+          <p class="eyebrow">Proces</p>
+          <h2>Transparentní kroky. Rychlá rozhodnutí.</h2>
         </div>
 
-        <div class="insight-shell reveal">
-          <div class="insight-tabs" role="tablist" aria-label="Scénáře spolupráce">
-            <button class="tab active" data-tab="regulace" role="tab" aria-selected="true">Regulace trhu</button>
-            <button class="tab" data-tab="dotace" role="tab" aria-selected="false">Dotace & veřejná podpora</button>
-            <button class="tab" data-tab="obec" role="tab" aria-selected="false">Město / obec</button>
-          </div>
-
-          <article class="insight-content">
-            <h3 id="insight-title">Regulace trhu</h3>
-            <p id="insight-text">
-              Připravíme white paper s variantami regulatorních dopadů, modelací rizik
-              a doporučením postupu pro interní vedení i externí jednání s úřady.
-            </p>
-            <ul id="insight-points">
-              <li>Právní a datová argumentace pro rozhodnutí managementu.</li>
-              <li>Podklady pro správní jednání a připomínková řízení.</li>
-              <li>Executive summary pro board a stakeholdery.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section faq" id="faq">
-        <div class="section-heading reveal">
-          <p class="eyebrow">FAQ</p>
-          <h2>Rychlé odpovědi před první konzultací</h2>
-        </div>
-        <div class="faq-list reveal">
-          <details>
-            <summary>Jak rychle dostaneme první návrh struktury?</summary>
-            <p>Typicky do 48 hodin od úvodního briefingu a předání vstupních dat.</p>
-          </details>
-          <details>
-            <summary>Pomáháte i s jednáním se správním orgánem?</summary>
-            <p>Ano, připravujeme podklady, argumentaci i doporučení průběhu jednání.</p>
-          </details>
-          <details>
-            <summary>Umíte připravit i executive verzi pro vedení firmy?</summary>
-            <p>Součástí dodávky je i stručná manažerská verze zaměřená na rozhodnutí.</p>
-          </details>
+        <div class="timeline-wrap">
+          <ol class="timeline">
+            <li class="reveal"><span>01</span><p>Diagnostika, cíle, rizika.</p></li>
+            <li class="reveal"><span>02</span><p>Návrh struktury a argumentů.</p></li>
+            <li class="reveal"><span>03</span><p>Drafting + revize s týmem.</p></li>
+            <li class="reveal"><span>04</span><p>Finalizace + implementace.</p></li>
+          </ol>
         </div>
       </section>
 
       <section class="section cta reveal" id="contact">
-        <h2>Potřebujete silný dokument pro důležité rozhodnutí?</h2>
-        <p>Napište nám a do 24 hodin se ozveme s návrhem dalšího postupu.</p>
+        <h2>Chcete dokument, který změní výsledek řízení?</h2>
+        <p>Napište nám. Do 24 hodin dostanete návrh dalšího postupu.</p>
         <a class="btn btn-primary magnetic" href="mailto:hello@whitepaperstudio.cz">hello@whitepaperstudio.cz</a>
       </section>
     </main>

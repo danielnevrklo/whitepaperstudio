@@ -6,7 +6,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.16 }
 );
 
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
@@ -32,113 +32,92 @@ cards.forEach((card) => {
     const y = event.clientY - rect.top;
     const rotateX = ((y / rect.height) - 0.5) * -6;
     const rotateY = ((x / rect.width) - 0.5) * 6;
-    card.style.transform = `perspective(750px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(4px)`;
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
-
   card.addEventListener('pointerleave', () => {
-    card.style.transform = 'perspective(750px) rotateX(0deg) rotateY(0deg)';
+    card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
   });
 });
 
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('nav');
-menuToggle.addEventListener('click', () => {
-  nav.classList.toggle('open');
-});
-
+menuToggle.addEventListener('click', () => nav.classList.toggle('open'));
 document.querySelectorAll('nav a').forEach((link) => {
   link.addEventListener('click', () => nav.classList.remove('open'));
 });
 
-const insights = {
-  regulace: {
-    title: 'Regulace trhu',
-    text: 'Připravíme white paper s variantami regulatorních dopadů, modelací rizik a doporučením postupu pro interní vedení i externí jednání s úřady.',
-    points: [
-      'Právní a datová argumentace pro rozhodnutí managementu.',
-      'Podklady pro správní jednání a připomínková řízení.',
-      'Executive summary pro board a stakeholdery.'
-    ]
-  },
-  dotace: {
-    title: 'Dotace & veřejná podpora',
-    text: 'Sestavíme podkladový dokument k dotačnímu nebo veřejnoprávnímu procesu včetně testu souladu, argumentace účelnosti a obrany proti námitkám.',
-    points: [
-      'Mapování rizik neoprávněné podpory a návrh mitigací.',
-      'Struktura argumentace pro poskytovatele i kontrolní orgány.',
-      'Checklist příloh a harmonogram podání.'
-    ]
-  },
-  obec: {
-    title: 'Město / obec',
-    text: 'Pomáháme samosprávám připravit odborně podložený white paper pro zásadní veřejná rozhodnutí, připomínkování i komunikaci s veřejností.',
-    points: [
-      'Variantní scénáře dopadů na rozpočet, provoz a občany.',
-      'Odborná argumentace pro jednání zastupitelstva.',
-      'Srozumitelná verze pro veřejnou prezentaci.'
-    ]
-  }
-};
-
-const titleEl = document.getElementById('insight-title');
-const textEl = document.getElementById('insight-text');
-const pointsEl = document.getElementById('insight-points');
-
-function renderInsight(key) {
-  const item = insights[key];
-  titleEl.textContent = item.title;
-  textEl.textContent = item.text;
-  pointsEl.innerHTML = item.points.map((point) => `<li>${point}</li>`).join('');
-}
-
-document.querySelectorAll('.tab').forEach((button) => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach((tab) => {
-      tab.classList.remove('active');
-      tab.setAttribute('aria-selected', 'false');
-    });
-
-    button.classList.add('active');
-    button.setAttribute('aria-selected', 'true');
-    renderInsight(button.dataset.tab);
+const orbitLabel = document.getElementById('orbit-label');
+document.querySelectorAll('.orbit-pill').forEach((pill) => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.orbit-pill').forEach((item) => item.classList.remove('active'));
+    pill.classList.add('active');
+    orbitLabel.textContent = pill.dataset.orbit;
   });
 });
 
-const complexity = document.getElementById('complexity');
-const deadline = document.getElementById('deadline');
-const score = document.getElementById('score');
-const recommendation = document.getElementById('recommendation');
-const shuffle = document.getElementById('shuffle');
-const pulseTarget = document.querySelector('.pulse-target');
+const storyTrack = document.getElementById('story-track');
+const storyCards = Array.from(document.querySelectorAll('[data-story]'));
+let storyIndex = 0;
 
-function updateSimulator() {
-  const complexityValue = Number(complexity.value);
-  const deadlineValue = Number(deadline.value);
-  const readiness = Math.max(20, Math.min(95, Math.round((100 - complexityValue) * 0.45 + deadlineValue * 0.9)));
-  score.textContent = `${readiness}%`;
-
-  if (readiness >= 75) {
-    recommendation.textContent = 'Doporučení: Strategický white paper + executive shrnutí.';
-  } else if (readiness >= 55) {
-    recommendation.textContent = 'Doporučení: White paper + příloha pro správní řízení.';
-  } else {
-    recommendation.textContent = 'Doporučení: Rychlá argumentační sada + krizový harmonogram podání.';
-  }
-
-  pulseTarget.classList.remove('pulse');
-  void pulseTarget.offsetWidth;
-  pulseTarget.classList.add('pulse');
+function updateStory() {
+  const cardWidth = storyCards[0].getBoundingClientRect().width + 12;
+  storyTrack.style.setProperty('--storyX', `${-storyIndex * cardWidth}px`);
+  storyCards.forEach((card, idx) => card.classList.toggle('active', idx === storyIndex));
 }
 
-[complexity, deadline].forEach((input) => {
-  input.addEventListener('input', updateSimulator);
-});
+window.addEventListener('wheel', (event) => {
+  const expSection = document.getElementById('experience');
+  const rect = expSection.getBoundingClientRect();
+  const inView = rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5;
+  if (!inView) {
+    return;
+  }
 
-shuffle.addEventListener('click', () => {
-  complexity.value = String(Math.floor(Math.random() * 100) + 1);
-  deadline.value = String(Math.floor(Math.random() * 60) + 1);
-  updateSimulator();
-});
+  if (Math.abs(event.deltaY) < 15) {
+    return;
+  }
+
+  if (event.deltaY > 0 && storyIndex < storyCards.length - 1) {
+    storyIndex += 1;
+    updateStory();
+    event.preventDefault();
+  } else if (event.deltaY < 0 && storyIndex > 0) {
+    storyIndex -= 1;
+    updateStory();
+    event.preventDefault();
+  }
+}, { passive: false });
+
+const countObserver = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      const el = entry.target;
+      const target = Number(el.dataset.target);
+      const duration = 900;
+      const start = performance.now();
+
+      function tick(time) {
+        const progress = Math.min((time - start) / duration, 1);
+        el.textContent = String(Math.floor(progress * target));
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = String(target);
+        }
+      }
+
+      requestAnimationFrame(tick);
+      obs.unobserve(el);
+    });
+  },
+  { threshold: 0.4 }
+);
+
+document.querySelectorAll('.count').forEach((el) => countObserver.observe(el));
 
 const magneticItems = document.querySelectorAll('.magnetic');
 magneticItems.forEach((item) => {
@@ -154,5 +133,5 @@ magneticItems.forEach((item) => {
   });
 });
 
-updateSimulator();
+updateStory();
 document.getElementById('year').textContent = new Date().getFullYear();
